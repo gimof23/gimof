@@ -5,7 +5,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     const recognitionUS = new SpeechRecognition();
     const recognitionGB = new SpeechRecognition();
-    
+    const recognitionPL = new SpeechRecognition();
+
     recognitionUS.lang = 'en-US';
     recognitionUS.interimResults = true;
     recognitionUS.continuous = true;
@@ -13,6 +14,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
     recognitionGB.lang = 'en-GB';
     recognitionGB.interimResults = true;
     recognitionGB.continuous = true;
+    
+    recognitionPL.lang = 'pl-PL';
+    recognitionPL.interimResults = true;
+    recognitionPL.continuous = true;
 
     let isRecording = false;
     let finalTranscript = '';
@@ -24,6 +29,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         interimTranscript = '';
         recognitionUS.start();
         recognitionGB.start();
+        recognitionPL.start();
         startBtn.textContent = 'Nagrywanie... Kliknij ponownie, aby zakończyć';
         startBtn.classList.add('recording');
         isRecording = true;
@@ -32,6 +38,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const stopRecognition = () => {
         recognitionUS.stop();
         recognitionGB.stop();
+        recognitionPL.stop();
         startBtn.textContent = 'Rozpocznij nagrywanie';
         startBtn.classList.remove('recording');
         isRecording = false;
@@ -373,6 +380,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     recognitionUS.addEventListener('result', handleResult);
     recognitionGB.addEventListener('result', handleResult);
+    recognitionPL.addEventListener('result', handleResult);
 
     recognitionUS.addEventListener('error', (event) => {
         result.textContent = `Wystąpił błąd (US): ${event.error}`;
@@ -381,6 +389,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     recognitionGB.addEventListener('error', (event) => {
         result.textContent = `Wystąpił błąd (GB): ${event.error}`;
+        stopRecognition();
+    });
+    
+    recognitionPL.addEventListener('error', (event) => {
+        result.textContent = `Wystąpił błąd (PL): ${event.error}`;
         stopRecognition();
     });
 });
