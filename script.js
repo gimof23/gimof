@@ -319,7 +319,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     };
 
     const addPunctuation = (text) => {
-        if (isQuestion(text)) {
+        if (isQuestion(text) && !text.includes("but")) {
             return text + '?';
         } else {
             return text + '.';
