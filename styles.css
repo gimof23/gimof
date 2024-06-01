@@ -15,7 +15,7 @@ body {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    width: 100%;
+    width: 90%;
     max-width: 600px; /* Set a maximum width */
 }
 
@@ -48,6 +48,6 @@ h1 {
     word-wrap: break-word; /* Ensures the text wraps within the container */
     white-space: pre-wrap; /* Preserves whitespace formatting */
     text-align: left; /* Aligns text to the left */
-    max-width: 100%; /* Ensures the text doesn't exceed the container's width */
-    overflow-wrap: break-word; /* Breaks long words to fit within the container */
+    width: 100%; /* Ensures the text container takes the full width of the container */
+    box-sizing: border-box; /* Ensures padding and borders are included in the element's total width and height */
 }
