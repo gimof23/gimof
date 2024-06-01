@@ -52,6 +52,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 let finalResult = event.results[i][0].transcript.trim();
                 finalResult = capitalizeFirstWord(finalResult);
                 finalResult = correctCommonMistakes(finalResult);
+                finalResult = handlePolishCityNames(finalResult);
                 finalResult = addPunctuation(finalResult);
                 finalTranscript += finalResult + ' ';
             } else {
@@ -302,6 +303,19 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
         const words = text.split(' ');
         return words.map(word => commonMistakes[word.toLowerCase()] || word).join(' ');
+    };
+
+    const handlePolishCityNames = (text) => {
+        const polishCities = ["Warszawa", "Kraków", "Łódź", "Wrocław", "Poznań", "Gdańsk", "Szczecin", "Bydgoszcz", "Lublin", "Białystok", "Katowice", "Gdynia", "Częstochowa", "Radom", "Toruń", "Sosnowiec", "Kielce", "Rzeszów", "Gliwice", "Zabrze", "Olsztyn", "Bielsko-Biała", "Bytom", "Zielona Góra", "Rybnik", "Ruda Śląska", "Opole", "Tarnów", "Chorzów", "Koszalin", "Legnica", "Grudziądz", "Słupsk", "Jaworzno", "Jastrzębie-Zdrój", "Nowy Sącz", "Jelenia Góra", "Konin", "Piła", "Lubin", "Inowrocław", "Ostrowiec Świętokrzyski", "Gniezno", "Suwałki", "Głogów", "Siemianowice Śląskie", "Pabianice", "Tarnobrzeg", "Piotrków Trybunalski", "Bełchatów", "Świdnica", "Biała Podlaska", "Żory", "Świętochłowice", "Chełm", "Przemyśl", "Tarnobrzeg", "Piekary Śląskie", "Ostrowiec Świętokrzyski", "Zamość", "Kędzierzyn-Koźle", "Stalowa Wola", "Łomża", "Leszno", "Mielec", "Tomaszów Mazowiecki", "Łowicz", "Lubartów", "Nysa", "Mysłowice", "Mikołów", "Augustów", "Ostrów Wielkopolski", "Starachowice", "Turek", "Sanok", "Skierniewice", "Świdnik", "Kołobrzeg", "Dębica", "Sandomierz", "Łęczna", "Świebodzin", "Łazy", "Puławy", "Krosno", "Wejherowo", "Starogard Gdański", "Żyrardów", "Siedlce", "Lębork", "Lubań", "Człuchów", "Polkowice", "Malbork", "Kłodzko", "Sieradz", "Nowa Sól", "Żagań", "Świnoujście", "Wałcz", "Września", "Oława", "Brzeg", "Kościan", "Sokołów Podlaski", "Grajewo", "Wyszków", "Środa Wielkopolska", "Mińsk Mazowiecki", "Żary", "Wągrowiec", "Gostyń", "Ostrołęka", "Międzyrzecz", "Łuków", "Kozienice", "Oława", "Skarżysko-Kamienna", "Pułtusk", "Goleniów", "Limanowa", "Jasło", "Kraśnik", "Ostrowiec Świętokrzyski", "Nowy Targ", "Siedlce", "Szczytno", "Racibórz", "Łęczna", "Cieszyn", "Ełk", "Świdnik", "Giżycko", "Kętrzyn", "Tarnogród"]; // Add other cities as needed
+
+        const words = text.split(' ');
+        return words.map(word => {
+            if (polishCities.includes(word)) {
+                return word;
+            } else {
+                return word;
+            }
+        }).join(' ');
     };
 
     const addPunctuation = (text) => {
