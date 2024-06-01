@@ -15,6 +15,8 @@ body {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    width: 90%; /* Set a maximum width */
+    max-width: 600px; /* You can adjust this as needed */
 }
 
 h1 {
@@ -43,4 +45,7 @@ h1 {
     font-size: 1.2rem;
     color: #999999;
     font-style: italic;
+    word-wrap: break-word; /* Ensures the text wraps within the container */
+    white-space: pre-wrap; /* Preserves whitespace formatting */
+    text-align: left; /* Aligns text to the left */
 }
